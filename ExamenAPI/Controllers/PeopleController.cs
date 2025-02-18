@@ -25,7 +25,7 @@ namespace ExamenAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<People>> GetPeopleByID(int id)
         {
-            var people = await _context.Peoples.FindAsync(id);
+            var people = await _context.People.FindAsync(id);
             if(people == null)
             {
                 return NotFound();
@@ -40,7 +40,7 @@ namespace ExamenAPI.Controllers
             {
                 return BadRequest();
             }
-            _context.Peoples.Add(people);
+            _context.People.Add(people);
             await _context.SaveChangesAsync();
 
             return people;
@@ -53,7 +53,7 @@ namespace ExamenAPI.Controllers
             {
                 return BadRequest();
             }
-            _context.Peoples.Update(people);
+            _context.People.Update(people);
 
             await _context.SaveChangesAsync();
 
@@ -62,12 +62,12 @@ namespace ExamenAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePeople(int id)
         {
-            var people = await _context.Peoples.FindAsync(id);
+            var people = await _context.People.FindAsync(id);
             if (people == null)
             {
                 return NotFound();
             }
-            _context.Peoples.Remove(people);
+            _context.People.Remove(people);
             await _context.SaveChangesAsync();
             return NoContent();
         }
