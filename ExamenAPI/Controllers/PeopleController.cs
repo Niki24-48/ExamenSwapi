@@ -17,15 +17,15 @@ namespace ExamenAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<People>>> GetPeople()
+        public async Task<ActionResult<IEnumerable<PeopleShort>>> GetPeople()
         {
-            return await _context.People.ToListAsync();
+            return await _context.PeopleShortV.ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<People>> GetPeopleByID(int id)
         {
-            var people = await _context.People.FindAsync(id);
+            var people = await _context.Peoples.FindAsync(id);
             if(people == null)
             {
                 return NotFound();
@@ -40,8 +40,9 @@ namespace ExamenAPI.Controllers
             {
                 return BadRequest();
             }
-            _context.People.Add(people);
+            _context.Peoples.Add(people);
             await _context.SaveChangesAsync();
+
             return people;
         }
 
@@ -52,7 +53,8 @@ namespace ExamenAPI.Controllers
             {
                 return BadRequest();
             }
-            _context.People.Update(people);
+            _context.Peoples.Update(people);
+
             await _context.SaveChangesAsync();
 
             return people;
@@ -60,12 +62,12 @@ namespace ExamenAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePeople(int id)
         {
-            var people = await _context.People.FindAsync(id);
+            var people = await _context.Peoples.FindAsync(id);
             if (people == null)
             {
                 return NotFound();
             }
-            _context.People.Remove(people);
+            _context.Peoples.Remove(people);
             await _context.SaveChangesAsync();
             return NoContent();
         }

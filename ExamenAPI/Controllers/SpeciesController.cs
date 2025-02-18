@@ -17,9 +17,9 @@ namespace ExamenAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Specie>>> GetSpecies()
+        public async Task<ActionResult<IEnumerable<SpeciesShort>>> GetSpecies()
         {
-            return await _context.Species.ToListAsync();
+            return await _context.SpeciesShortV.ToListAsync();
         }
 
         [HttpGet("{id}")]

@@ -17,9 +17,10 @@ namespace ExamenAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehicles()
+        public async Task<ActionResult<IEnumerable<VehiclesShort>>> GetVehicles()
         {
-            return await _context.Vehicles.ToListAsync();
+            return  await _context.VehiclesShortsV.ToListAsync();
+            
         }
 
 

@@ -18,9 +18,9 @@ namespace ExamenAPI.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Starship>>> GetStarships()
+        public async Task<ActionResult<IEnumerable<StarshipsShort>>> GetStarships()
         {
-            return await _context.Starships.ToListAsync();
+            return await _context.StarshipsShortV.ToListAsync();
         }
 
         [HttpGet("{id}")]
